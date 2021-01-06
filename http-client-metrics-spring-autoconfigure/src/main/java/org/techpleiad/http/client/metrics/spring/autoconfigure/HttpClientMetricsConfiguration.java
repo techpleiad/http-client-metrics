@@ -18,7 +18,7 @@ public class HttpClientMetricsConfiguration {
     @Bean
     @Primary
     @ConditionalOnProperty(value = "http.client.metrics.enabled", havingValue = "true", matchIfMissing = false)
-    public DefaultApacheHttpClientConnectionManagerFactory apacheHttpClientConnectionManagerFactory(final MeterRegistry meterRegistry) {
+    public CustomDefaultApacheHttpClientConnectionManagerFactory apacheHttpClientConnectionManagerFactory(final MeterRegistry meterRegistry) {
         return new CustomDefaultApacheHttpClientConnectionManagerFactory(meterRegistry);
     }
 }
