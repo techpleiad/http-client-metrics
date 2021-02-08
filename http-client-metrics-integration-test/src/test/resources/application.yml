@@ -1,0 +1,21 @@
+sampleClient:
+  ribbon:
+    eureka:
+      enable: false
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: localhost:${wiremock.server.port}
+spring:
+  profiles:
+    active: component-test
+  cloud:
+    config:
+      enabled: false
+    service-registry:
+      auto-registration:
+        enabled: false
+    discovery:
+      enabled: false
+http:
+  client:
+    metrics:
+      enabled: true
