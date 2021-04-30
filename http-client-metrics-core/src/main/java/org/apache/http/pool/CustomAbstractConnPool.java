@@ -2,6 +2,8 @@ package org.apache.http.pool;
 
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
+import org.apache.http.annotation.Contract;
+import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.util.Args;
 import org.apache.http.util.Asserts;
@@ -29,6 +31,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * User: rajeshgupta
  * Date: 30/12/20
  */
+@Contract(
+        threading = ThreadingBehavior.SAFE_CONDITIONAL
+)
 public abstract class CustomAbstractConnPool<T, C, E extends PoolEntry<T, C>> implements ConnPool<T, E>, ConnPoolControl<T> {
 
     private final Lock lock;

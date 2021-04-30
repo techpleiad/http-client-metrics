@@ -3,6 +3,8 @@ package org.apache.http.impl.conn;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.annotation.Contract;
+import org.apache.http.annotation.ThreadingBehavior;
 import org.apache.http.conn.ManagedHttpClientConnection;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.pool.ConnFactory;
@@ -16,6 +18,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * User: rajeshgupta
  * Date: 30/12/20
  */
+@Contract(threading = ThreadingBehavior.SAFE)
 public class CustomObservableCPool extends CustomAbstractConnPool<HttpRoute, ManagedHttpClientConnection, CPoolEntry> {
 
     private static final AtomicLong COUNTER = new AtomicLong();
